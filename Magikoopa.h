@@ -6,37 +6,38 @@
 
 using namespace std;
 
-class Magikoopa : public Range{
-	protected:
-		string Color;//color del traje
-		int HP;
-		int Defensa;
-		int Velocidad;
-		int Fuerza;
-		bool Especial;
-	public:
-		Magikoopa(string,int,string,int);//nombre, rango, color del traje, HP
-		Magikoopa();
+class Magikoopa : public Range
+{
+  protected:
+	string Color; //color del traje
+	int HP;
+	int Defensa;
+	int Velocidad;
+	int Fuerza;
+	bool Especial;
 
-		virtual ~Magikoopa();
-		virtual void pelea(Minion*);
+  public:
+	Magikoopa(string, int, string, int); //nombre, rango, color del traje, HP
+	Magikoopa();
 
-		string getColor();
-		void setColor(string);
+	virtual ~Magikoopa();
+	virtual void pelea(Minion *);
 
-		int getHP();
-		void setHP(int);
+	string getColor();
+	void setColor(string);
 
-		int getDefensa();
-		void setDefensa(int);
+	int getHP();
+	void setHP(int);
 
-		int getVelocidad();
-		void setVelocidad(int);
+	int getDefensa();
+	void setDefensa(int);
 
-		int getFuerza();
-		void setFuerza(int);
+	int getVelocidad();
+	void setVelocidad(int);
 
-		bool getEspecial();
-		void setEspecial(bool);
+	int getFuerza();
+	void setFuerza(int);
 
+	bool getEspecial();
+	void setEspecial(bool);
 };

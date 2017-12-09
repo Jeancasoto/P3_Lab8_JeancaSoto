@@ -7,36 +7,37 @@
 
 using namespace std;
 
-class Goomba : public Melee{
-	protected:
-		double tamano;
-		int HP;
-		int Defensa;
-		int Velocidad;
-		int Fuerza;
-		bool Especial;
-	public:
-		Goomba(string,int,double,int);
-		Goomba();
-		virtual ~Goomba();
-		virtual void pelea(Minion*);
+class Goomba : public Melee
+{
+  protected:
+	double tamano;
+	int HP;
+	int Defensa;
+	int Velocidad;
+	int Fuerza;
+	bool Especial;
 
-		double getTamano();
-		void setTamano(double);
+  public:
+	Goomba(string, int, double, int);
+	Goomba();
+	virtual ~Goomba();
+	virtual void pelea(Minion *);
 
-		int getHP();
-		void setHP(int);
+	double getTamano();
+	void setTamano(double);
 
-		int getDefensa();
-		void setDefensa(int);
+	int getHP();
+	void setHP(int);
 
-		int getVelocidad();
-		void setVelocidad(int);
+	int getDefensa();
+	void setDefensa(int);
 
-		int getFuerza();
-		void setFuerza(int);
+	int getVelocidad();
+	void setVelocidad(int);
 
-		bool getEspecial();
-		void setEspecial(bool);
+	int getFuerza();
+	void setFuerza(int);
 
+	bool getEspecial();
+	void setEspecial(bool);
 };

@@ -5,22 +5,24 @@
 
 using namespace std;
 
-
-Melee::Melee(string pNombre , int pIntimidacion): Minion(pNombre){
-    Id="M";
-    Nombre= pNombre;
-    Ganadas= 0;
-    Experiencia=0;
-	Intimidacion=pIntimidacion;
+Melee::Melee(string pNombre, int pIntimidacion) : Minion(pNombre)
+{
+    Id = "M";
+    Nombre = pNombre;
+    Ganadas = 0;
+    Experiencia = 0;
+    Intimidacion = pIntimidacion;
 }
 //destructor
-Melee::~Melee(){}
+Melee::~Melee() {}
 
-Melee::Melee(){}
+Melee::Melee() {}
 
-void Melee::setIntimidacion(int pIntimidacion){
-    Intimidacion=pIntimidacion;
+void Melee::setIntimidacion(int pIntimidacion)
+{
+    Intimidacion = pIntimidacion;
 }
-int Melee::getIntimidacion(){
-   return Intimidacion;
+int Melee::getIntimidacion()
+{
+    return Intimidacion;
 }

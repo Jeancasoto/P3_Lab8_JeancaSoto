@@ -3,25 +3,27 @@
 #include <stdlib.h>
 #include <string>
 
-
 using namespace std;
 
-Range::Range(string pNombre , int pRango): Minion(pNombre){
-    Id="R";
-    Nombre= pNombre;
-    Ganadas= 0;
-    Experiencia=0;
-	Rango=pRango;
+Range::Range(string pNombre, int pRango) : Minion(pNombre)
+{
+    Id = "R";
+    Nombre = pNombre;
+    Ganadas = 0;
+    Experiencia = 0;
+    Rango = pRango;
 }
 
-//destructor 
-Range::~Range(){}
+//destructor
+Range::~Range() {}
 
-Range::Range(){}
+Range::Range() {}
 
-void Range::setRango(int pRango){
-   Rango=pRango;
+void Range::setRango(int pRango)
+{
+    Rango = pRango;
 }
-int Range::getRango(){
-   return Rango;
+int Range::getRango()
+{
+    return Rango;
 }

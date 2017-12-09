@@ -6,17 +6,18 @@
 
 using namespace std;
 
-class Range : public Minion{
-	protected:
-		int Rango;
-	public:
-		Range(string , int);//nombre, rango, 
-		Range();
+class Range : public Minion
+{
+  protected:
+	int Rango;
 
-		virtual ~Range();
-		virtual void pelea(Minion*)=0;
+  public:
+	Range(string, int); //nombre, rango,
+	Range();
 
-		int getRango();
-		void setRango(int);
+	virtual ~Range();
+	virtual void pelea(Minion *) = 0;
 
+	int getRango();
+	void setRango(int);
 };

@@ -6,33 +6,37 @@
 
 using namespace std;
 
-class ChainChop : public Melee{
-	protected:
-		string color;//color de su cuerpo
-		int HP;
-		int Defensa;
-		int Velocidad;
-		int Fuerza;
-		bool Especial;
-	public:
-		ChainChop(string,int,string,int);
-		ChainChop();
-		virtual ~ChainChop();
-		virtual void pelea(Minion* );
+class ChainChop : public Melee
+{
+  protected:
+	string color; //color de su cuerpo
+	int HP;
+	int Defensa;
+	int Velocidad;
+	int Fuerza;
+	bool Especial;
 
-		string getColor();
-		void setColor(string);
+  public:
+	ChainChop(string, int, string, int);
+	ChainChop();
+	virtual ~ChainChop();
+	virtual void pelea(Minion *);
 
-		int getHP();
-		void setHP(int);
+	string getColor();
+	void setColor(string);
 
-		int getVelocidad();
-		void setVelocidad(int);
+	int getDefensa();
+	void setDefensa(int);
 
-		int getFuerza();
-		void setFuerza(int);
+	int getHP();
+	void setHP(int);
 
-		bool getEspecial();
-		void setEspecial(bool);
+	int getVelocidad();
+	void setVelocidad(int);
 
+	int getFuerza();
+	void setFuerza(int);
+
+	bool getEspecial();
+	void setEspecial(bool);
 };

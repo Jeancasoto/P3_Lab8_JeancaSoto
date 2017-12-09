@@ -1,32 +1,33 @@
-#pragma once 
+#pragma once
 #include <iostream>
 #include <string>
 #include <vector>
 
 using namespace std;
 
-class Minion{
-	protected:
-		string Id;
-		string Nombre;
-		int Ganadas;
-		int Experiencia;
-	public:
-		Minion(string);
-		virtual ~Minion();
-		virtual void pelea(Minion* )=0;
-		Minion();
+class Minion
+{
+  protected:
+	string Id;
+	string Nombre;
+	int Ganadas;
+	int Experiencia;
 
-		string getId();
-		void setId(string);
+  public:
+	Minion(string);
+	virtual ~Minion();
+	virtual void pelea(Minion *) = 0;
+	Minion();
 
-		string getNombre();
-		void setNombre(string);
+	string getId();
+	void setId(string);
 
-		int getGanadas();
-		void setGanadas(int);
+	string getNombre();
+	void setNombre(string);
 
-		int getExperiencia();
-		void setExperiencia(int);
+	int getGanadas();
+	void setGanadas(int);
 
+	int getExperiencia();
+	void setExperiencia(int);
 };

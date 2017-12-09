@@ -6,37 +6,38 @@
 
 using namespace std;
 
-class HammerBro : public Range{
-	protected:
-		double tamano;//tamano del hammer 
-		int HP;
-		int Defensa;
-		int Velocidad;
-		int Fuerza;
-		bool Especial;
-	public:
-		HammerBro(string,int,double ,int);//nombre,rango,tamano, HP
-		HammerBro();
+class HammerBro : public Range
+{
+  protected:
+	double tamano; //tamano del hammer
+	int HP;
+	int Defensa;
+	int Velocidad;
+	int Fuerza;
+	bool Especial;
 
-		virtual ~HammerBro();
-		virtual void pelea(Minion* );
+  public:
+	HammerBro(string, int, double, int); //nombre,rango,tamano, HP
+	HammerBro();
 
-		double getTamano();
-		void setTamano(double);
+	virtual ~HammerBro();
+	virtual void pelea(Minion *);
 
-		int getHP();
-		void setHP(int);
+	double getTamano();
+	void setTamano(double);
 
-		int getDefensa();
-		void setDefensa(int);
+	int getHP();
+	void setHP(int);
 
-		int getVelocidad();
-		void setVelocidad(int);
+	int getDefensa();
+	void setDefensa(int);
 
-		int getFuerza();
-		void setFuerza(int);
+	int getVelocidad();
+	void setVelocidad(int);
 
-		bool getEspecial();
-		void setEspecial(bool);
+	int getFuerza();
+	void setFuerza(int);
 
+	bool getEspecial();
+	void setEspecial(bool);
 };

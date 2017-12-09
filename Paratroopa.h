@@ -11,36 +11,37 @@
 
 using namespace std;
 
-class Paratroopa : public Flying{
-	protected:
-		string Color;//color de caparazon
-		int HP;
-		int Defensa;
-		int Velocidad;
-		int Fuerza;
-		bool Especial;
-	public:
-		Paratroopa(string,int,string,int);//nombre,vuelo,color de caparazon, HP
-		Paratroopa();
-		virtual ~Paratroopa();
-		virtual void pelea(Minion*);
+class Paratroopa : public Flying
+{
+  protected:
+	string Color; //color de caparazon
+	int HP;
+	int Defensa;
+	int Velocidad;
+	int Fuerza;
+	bool Especial;
 
-		string getColor();
-		void setColor(string);
+  public:
+	Paratroopa(string, int, string, int); //nombre,vuelo,color de caparazon, HP
+	Paratroopa();
+	virtual ~Paratroopa();
+	virtual void pelea(Minion *);
 
-		int getHP();
-		void setHP(int);
+	string getColor();
+	void setColor(string);
 
-		int getDefensa();
-		void setDefensa(int);
+	int getHP();
+	void setHP(int);
 
-		int getVelocidad();
-		void setVelocidad(int);
+	int getDefensa();
+	void setDefensa(int);
 
-		int getFuerza();
-		void setFuerza(int);
+	int getVelocidad();
+	void setVelocidad(int);
 
-		bool getEspecial();
-		void setEspecial(bool);
+	int getFuerza();
+	void setFuerza(int);
 
+	bool getEspecial();
+	void setEspecial(bool);
 };

@@ -6,15 +6,16 @@
 
 using namespace std;
 
-class Flying : public Minion{
-	protected:
-		int Vuelo;
-	public:
-		Flying(string ,int);//nombre, vuelo
-		Flying();
-		virtual ~Flying();
-		virtual void pelea(Minion* )=0;
-		int getVuelo();
-		void setVuelo(int);
+class Flying : public Minion
+{
+  protected:
+	int Vuelo;
 
+  public:
+	Flying(string, int); //nombre, vuelo
+	Flying();
+	virtual ~Flying();
+	virtual void pelea(Minion *) = 0;
+	int getVuelo();
+	void setVuelo(int);
 };
