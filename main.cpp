@@ -9,6 +9,7 @@
 #include "Goomba.h"
 #include "ChainChop.h"
 #include "Boo.h"
+#include <fstream>
 #include "Paratroopa.h"
 #include "Magikoopa.h"
 #include "HammerBro.h"
@@ -29,6 +30,7 @@ int main(){
         vector<Minion*> p1;
         vector<Minion*> p2;
         Minion*** ARREGLO=Create();
+        fstream file;
         int cont=0;
         while(resp=='s'|| resp=='S'){
         MenuPrincipal:
@@ -518,7 +520,7 @@ int main(){
                         std::cout << "\nTEAM 1! READY" << '\n';
 
 
-                        std::cout << "\nIngrese el numero de posicion donde se encuentra el primer equipo" << '\n';
+                        std::cout << "\nIngrese el numero de posicion donde se encuentra el segundo equipo" << '\n';
                         std::cout << "en contienda " << '\n';
                         cin>> pos2;
 
@@ -528,56 +530,78 @@ int main(){
                         std::cout << "\nTEAM 2! READY" << '\n';
 
 
-
+                        int ganador1=0;
+                        int ganador2=0;
                         
                         char seguir;
                         for(int i=1; i<7; i++){
                             int HP1;
                             int HP2;
+                            int num1;
+                            int num2;
 
                             if(dynamic_cast<Goomba*>(p1[i])){
                                 HP1=dynamic_cast<Goomba*>(p1[i])->getHP();
+                                num1=dynamic_cast<Goomba*>(p1[i])->getHP();
                             }
                             if(dynamic_cast<ChainChop*>(p1[i])){
                                 HP1=dynamic_cast<ChainChop*>(p1[i])->getHP();
+                                 num1=dynamic_cast<ChainChop*>(p1[i])->getHP();
                             }
                             if(dynamic_cast<Boo*>(p1[i])){
                                 HP1=dynamic_cast<Boo*>(p1[i])->getHP();
+                                 num1=dynamic_cast<Boo*>(p1[i])->getHP();
                             }
                             if(dynamic_cast<Magikoopa*>(p1[i])){
                                 HP1=dynamic_cast<Magikoopa*>(p1[i])->getHP();
+                                 num1=dynamic_cast<Magikoopa*>(p1[i])->getHP();
                             }
                             if(dynamic_cast<HammerBro*>(p1[i])){
                                 HP1=dynamic_cast<HammerBro*>(p1[i])->getHP();
+                                 num1=dynamic_cast<HammerBro*>(p1[i])->getHP();
                             }
                             if(dynamic_cast<Paratroopa*>(p1[i])){
                                 HP1=dynamic_cast<Paratroopa*>(p1[i])->getHP();
+                                 num1=dynamic_cast<Paratroopa*>(p1[i])->getHP();
                             }
 
 
                             if(dynamic_cast<Goomba*>(p2[i])){
                             HP2=dynamic_cast<Goomba*>(p2[i])->getHP();
+                             num2=dynamic_cast<Goomba*>(p1[i])->getHP();
                             }
                             if(dynamic_cast<ChainChop*>(p2[i])){
                                 HP2=dynamic_cast<ChainChop*>(p2[i])->getHP();
+                                num2=dynamic_cast<ChainChop*>(p1[i])->getHP();
                             }
                             if(dynamic_cast<Boo*>(p2[i])){
                                 HP2=dynamic_cast<Boo*>(p2[i])->getHP();
+                                num2=dynamic_cast<Boo*>(p1[i])->getHP();
                             }
                             if(dynamic_cast<Magikoopa*>(p2[i])){
                                 HP2=dynamic_cast<Magikoopa*>(p2[i])->getHP();
+                                num2=dynamic_cast<Magikoopa*>(p1[i])->getHP();
                             }
                             if(dynamic_cast<HammerBro*>(p2[i])){
                                 HP2=dynamic_cast<HammerBro*>(p2[i])->getHP();
+                                num2=dynamic_cast<HammerBro*>(p1[i])->getHP();
                             }
                             if(dynamic_cast<Paratroopa*>(p2[i])){
                                 HP2=dynamic_cast<Paratroopa*>(p2[i])->getHP();
+                                num2=dynamic_cast<Paratroopa*>(p1[i])->getHP();
                             }
 
+                         file.open("MaquinaTiempo.txt", std::fstream::in | std::fstream::out | std::fstream::app);
+                        // file << cliente->escritura();
+                        // file.close();
                             std::cout << "--------------------COMIENZA LA PELEA-------------------------" << '\n';
+                            file<<"--------------------COMIENZA LA PELEA-------------------------\n";
                             std::cout << p1[i]->getNombre()<<"  vs  " <<p2[i]->getNombre() <<'\n';
+                            file<<p1[i]->getNombre()<<"  vs  " <<p2[i]->getNombre() <<'\n';
 
                             do{
+                                seguir='s';
+
                                 int turno=rand() % 2 + 1;
                                 if(turno==1){
                                      p1[i]->pelea(p2[i]);
@@ -589,12 +613,44 @@ int main(){
                                     turno=1;
                                 }
                                 
-                                
-                                cout << "SEGUIR"<<endl;
-                                cin >>seguir;
+                                if(num1<=0 || num2<=0){
+                                    seguir='n';
+                                    if(num1<=0){
+                                        ganador2++;
+                                        p1[i]->setExperiencia(5);
+                                        p2[i]->setExperiencia(10);
+                                        p2[i]->setGanadas(1);
+                                        std::cout << "---------TENEMOS GANADOR-------" << '\n';
+                                        file << "---------TENEMOS GANADOR-------" << '\n';
+                                        std::cout << p1[i]->getNombre() <<"Gana +5 de experiencia" << '\n';
+                                        file << p1[i]->getNombre() <<"Gana +5 de experiencia" << '\n';
+                                        std::cout << p2[i]->getNombre() <<"Gana +10 de experiencia" << '\n';
+                                        file << p2[i]->getNombre() <<"Gana +10 de experiencia" << '\n';
+                                        std::cout << p2[i]->getNombre() <<"Gana +1 de batallas ganadas" << '\n';
+                                        file << p2[i]->getNombre() <<"Gana +1 de batallas ganadas" << '\n';
+                                    }
+                                    if(num2<=0){
+                                        ganador1++;
+                                        p2[i]->setExperiencia(5);
+                                        p1[i]->setExperiencia(10);
+                                        p1[i]->setGanadas(1);
+                                        std::cout << "---------TENEMOS GANADOR-------" << '\n';
+                                        file << "---------TENEMOS GANADOR-------" << '\n';
+                                        std::cout << p2[i]->getNombre() <<"Gana +5 de experiencia" << '\n';
+                                        file << p2[i]->getNombre() <<"Gana +5 de experiencia" << '\n';
+                                        std::cout << p1[i]->getNombre() <<"Gana +10 de experiencia" << '\n';
+                                        file << p1[i]->getNombre() <<"Gana +10 de experiencia" << '\n';
+                                        std::cout << p1[i]->getNombre() <<"Gana +1 de batallas ganadas" << '\n';
+                                        file << p1[i]->getNombre() <<"Gana +1 de batallas ganadas" << '\n';
+                                    }
 
-                                // int num1=HP1->getHP();
-                                // int num2=HP2->getHP(); 
+                                }
+                                
+                                
+                                cout << "SEGUIR? [s/n]"<<endl;
+                                cin>>seguir;
+
+                                
 
                             } while (seguir!='n');
 
@@ -602,10 +658,34 @@ int main(){
 
                         }//fin for
 
+                        if(ganador1==ganador2){
+                                    std::cout << "---------Luchan los capitanes -------" << '\n';
+                                    file << "---------Luchan los capitanes -------" << '\n';
+                                    char capi;
+                                    do{
+                                        
+                                        int turno=rand() % 2 + 1;
+                                        if(turno==1){
+                                            p1[0]->pelea(p2[0]);
+                                            turno=2;
+                                        }
+
+                                        if(turno==2){
+                                            p2[0]->pelea(p1[0]);
+                                            turno=1;
+                                        }
+
+                                        std::cout << "Desea seguir pelea" << '\n';
+                                        cin>> capi;
+
+                                    } while (capi!='n');
+                                    
+                                }
+
                         // fstream file;
                         // file.open("Datos.txt", std::fstream::in | std::fstream::out | std::fstream::app);
                         // file << cliente->escritura();
-                        // file.close();
+                         file.close();
                         
                         
 
