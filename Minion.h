@@ -14,7 +14,7 @@ class Minion{
 	public:
 		Minion(string);
 		virtual ~Minion();
-		virtual void pelea()=0;
+		virtual void pelea(Minion* )=0;
 		Minion();
 
 		string getId();

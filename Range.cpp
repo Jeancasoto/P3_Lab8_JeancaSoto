@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string>
 
+
 using namespace std;
 
 Range::Range(string pNombre , int pRango): Minion(pNombre){

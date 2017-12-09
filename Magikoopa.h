@@ -19,7 +19,7 @@ class Magikoopa : public Range{
 		Magikoopa();
 
 		virtual ~Magikoopa();
-		virtual void pelea();
+		virtual void pelea(Minion*);
 
 		string getColor();
 		void setColor(string);

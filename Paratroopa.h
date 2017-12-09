@@ -3,6 +3,11 @@
 #include <string>
 #include <vector>
 #include "Flying.h"
+#include "ChainChop.h"
+#include "HammerBro.h"
+#include "Magikoopa.h"
+#include "Goomba.h"
+#include "Boo.h"
 
 using namespace std;
 
@@ -18,7 +23,7 @@ class Paratroopa : public Flying{
 		Paratroopa(string,int,string,int);//nombre,vuelo,color de caparazon, HP
 		Paratroopa();
 		virtual ~Paratroopa();
-		virtual void pelea();
+		virtual void pelea(Minion*);
 
 		string getColor();
 		void setColor(string);

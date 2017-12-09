@@ -10,14 +10,15 @@
 #include "ChainChop.h"
 #include "Boo.h"
 #include "Paratroopa.h"
-#include "HammerBro.h"
 #include "Magikoopa.h"
+#include "HammerBro.h"
 #include <vector>
 
 
 Minion*** Create();
 void Delete(Minion***);
 void Print(Minion***);
+//void pelea(vector<Minion*>, vector<Minion*>);
 
 using namespace std;
 
@@ -25,7 +26,8 @@ int main(){
     try{
         char resp='s';
         vector <Minion*> minions;
-        vector<Minion**> teams;
+        vector<Minion*> p1;
+        vector<Minion*> p2;
         Minion*** ARREGLO=Create();
         int cont=0;
         while(resp=='s'|| resp=='S'){
@@ -477,6 +479,163 @@ int main(){
             break;
             //fin case 'c'
         case  'd':{//simulacion
+
+        std::cout << "⚔︎ PELEA DE EQUIPOS ⚔︎" << '\n';
+                if(ARREGLO[0][0]==NULL){
+                std::cout << "\n✖︎ Actualmente no hemos encontrado Equipos disponibles, Porfavor agregue Equipos al programa" << '\n';
+                goto MenuPrincipal;
+                }else{
+                    //string nombre;
+                    int pos1;
+                    int pos2;
+                    //std::cout << "Ingrese el nombre de su equipo: " << '\n';
+                    //cin >> nombre;
+
+                    //Minion* equipo[7];
+
+                    //for (int j = 0; j < 7; j++){
+                        std::cout << "\nA continuacion se le muestran los Equipos disponibles, los cuales pueden entrar en contienda" << '\n';
+                        //std::cout << "7 de ellos para su equipo." << '\n';
+                        for(int i = 0; i < 50; i++){
+                            //for (int i = 0; i < 7; i++){
+                                if(ARREGLO[i][0]!=NULL){
+                                    std::cout <<"El equipo en pos: "<<"["<<i<<"]"<<" donde el capitan es:  "<< ARREGLO[i][0]->getNombre() << '\n';
+                                    //break;
+                                //}
+                            }
+                            
+                            //std::cout <<"El equipo donde el capitan es:  "<< teams[1][1]->getNombre() << '\n';
+
+                        }
+
+                        std::cout << "\nIngrese el numero de posicion donde se encuentra el primer equipo" << '\n';
+                        std::cout << "en contienda " << '\n';
+                        cin>> pos1;
+
+                        for (int j = 0; j < 7; j++){
+                            p1.push_back(ARREGLO[pos1][j]);
+                        }
+                        std::cout << "\nTEAM 1! READY" << '\n';
+
+
+                        std::cout << "\nIngrese el numero de posicion donde se encuentra el primer equipo" << '\n';
+                        std::cout << "en contienda " << '\n';
+                        cin>> pos2;
+
+                        for (int k = 0; k < 7; k++){
+                            p2.push_back(ARREGLO[pos2][k]);
+                        }
+                        std::cout << "\nTEAM 2! READY" << '\n';
+
+
+
+                        
+                        char seguir;
+                        for(int i=1; i<7; i++){
+                            int HP1;
+                            int HP2;
+
+                            if(dynamic_cast<Goomba*>(p1[i])){
+                                HP1=dynamic_cast<Goomba*>(p1[i])->getHP();
+                            }
+                            if(dynamic_cast<ChainChop*>(p1[i])){
+                                HP1=dynamic_cast<ChainChop*>(p1[i])->getHP();
+                            }
+                            if(dynamic_cast<Boo*>(p1[i])){
+                                HP1=dynamic_cast<Boo*>(p1[i])->getHP();
+                            }
+                            if(dynamic_cast<Magikoopa*>(p1[i])){
+                                HP1=dynamic_cast<Magikoopa*>(p1[i])->getHP();
+                            }
+                            if(dynamic_cast<HammerBro*>(p1[i])){
+                                HP1=dynamic_cast<HammerBro*>(p1[i])->getHP();
+                            }
+                            if(dynamic_cast<Paratroopa*>(p1[i])){
+                                HP1=dynamic_cast<Paratroopa*>(p1[i])->getHP();
+                            }
+
+
+                            if(dynamic_cast<Goomba*>(p2[i])){
+                            HP2=dynamic_cast<Goomba*>(p2[i])->getHP();
+                            }
+                            if(dynamic_cast<ChainChop*>(p2[i])){
+                                HP2=dynamic_cast<ChainChop*>(p2[i])->getHP();
+                            }
+                            if(dynamic_cast<Boo*>(p2[i])){
+                                HP2=dynamic_cast<Boo*>(p2[i])->getHP();
+                            }
+                            if(dynamic_cast<Magikoopa*>(p2[i])){
+                                HP2=dynamic_cast<Magikoopa*>(p2[i])->getHP();
+                            }
+                            if(dynamic_cast<HammerBro*>(p2[i])){
+                                HP2=dynamic_cast<HammerBro*>(p2[i])->getHP();
+                            }
+                            if(dynamic_cast<Paratroopa*>(p2[i])){
+                                HP2=dynamic_cast<Paratroopa*>(p2[i])->getHP();
+                            }
+
+                            std::cout << "--------------------COMIENZA LA PELEA-------------------------" << '\n';
+                            std::cout << p1[i]->getNombre()<<"  vs  " <<p2[i]->getNombre() <<'\n';
+
+                            do{
+                                int turno=rand() % 2 + 1;
+                                if(turno==1){
+                                     p1[i]->pelea(p2[i]);
+                                    turno=2;
+                                }
+
+                                if(turno==2){
+                                     p2[i]->pelea(p1[i]);
+                                    turno=1;
+                                }
+                                
+                                
+                                cout << "SEGUIR"<<endl;
+                                cin >>seguir;
+
+                                // int num1=HP1->getHP();
+                                // int num2=HP2->getHP(); 
+
+                            } while (seguir!='n');
+
+                            
+
+                        }//fin for
+
+                        // fstream file;
+                        // file.open("Datos.txt", std::fstream::in | std::fstream::out | std::fstream::app);
+                        // file << cliente->escritura();
+                        // file.close();
+                        
+                        
+
+                        //myvector.erase (myvector.begin()+5);
+                        //teams.erase(teams.begin()+pos);
+
+                        // for(int i = 0; i < 50; i++){
+                        //     for (int j = 0; j < 7; j++){
+                        //         if(i==pos){
+                        //             ARREGLO[i][j]=NULL;
+                        //         }
+                        //     }
+
+                        // }
+                        
+
+                        // std::cout << "✔︎ ELIMINO EXITOSAMENTE" <<'\n';
+
+
+                        //equipo[j]=minions[pos];
+                    //}
+
+                    //teams.push_back(equipo);
+                    //std::cout << "✔︎ El equipo fue creado exitosamente!" << '\n';
+
+                }
+
+
+
+
         //    for (int i = 0; i < teams.size(); i++){
         //        std::cout << teams[0][i]->getNombre() << '\n';
         //    }
@@ -816,6 +975,7 @@ void Delete(Minion*** matrix){
 
 //imprimir Matrix
 
+
 void Print(Minion*** matrix){
 	
 	for(int i=0; i<50 ; i++){
@@ -831,6 +991,148 @@ void Print(Minion*** matrix){
 
 }
 
+// void pelea(vector<Minion*> team1, vector<Minion*> team2 ){
+
+//     int t1;
+//     int t2;
+//     int turno=rand() % 2 + 1;
+//     int especial=rand() % 5 + 1;
+//     int turno1;
+//     int turno2;
+//     int velo;
+
+//     for (int i = 1; i < 7; i++){
+//         // std::cout << "--------------------COMIENZA LA PELEA-------------------------" << '\n';
+//         // std::cout << team1[i]->getNombre()<<"vs" <<team2[i]->getNombre() <<'\n';
+//         if( (dynamic_cast<Goomba*>(team1[i])->getId()=="G" && dynamic_cast<HammerBro*>(team2[i])->getId()=="H") || (dynamic_cast<Goomba*>(team1[i])->getId()=="G" && dynamic_cast<Magikoopa*>(team2[i])->getId()=="MK") || (dynamic_cast<ChainChop*>(team1[i])->getId()=="CH" && dynamic_cast<HammerBro*>(team2[i])->getId()=="H") || (dynamic_cast<ChainChop*>(team1[i])->getId()=="CH" && dynamic_cast<Magikoopa*>(team2[i])->getId()=="MK")){
+//             std::cout << "MELEE VENTAJA SOBRE LOS RANGE " << '\n';
+//             std::cout << "Atack(0.5)" << '\n';
+
+//             //GOMBA-HAMMERBRO
+//             if((dynamic_cast<Goomba*>(team1[i])->getId()=="G" && dynamic_cast<HammerBro*>(team2[i])->getId()=="H")){
+//                 do
+//                 {
+                    
+//                 } while(dynamic_cast<Goomba*>(team1[i])->getHP()>0 || dynamic_cast<HammerBro*>(team2[i])->getHP()>0);
+//                 if(dynamic_cast<Goomba*>(team1[i])->getHP()<=0){
+//                     team1[i]->setGanadas(0);
+//                     team1[i]->setExperiencia(5);
+
+//                     team2[i]->setGanadas(1);
+//                     team2[i]->setExperiencia(10);
+//                     std::cout << "Gano: "<< team2[i]->getNombre() << '\n';
+//                 }else if(dynamic_cast<HammerBro*>(team2[i])->getHP()<=0){
+//                     team2[i]->setGanadas(0);
+//                     team2[i]->setExperiencia(5);
+
+//                     team1[i]->setGanadas(1);
+//                     team1[i]->setExperiencia(10);
+//                     std::cout << "Gano: "<< team1[i]->getNombre() << '\n';
+//                 }
+//             }
+
+//             //GOMBA-MAGICKOOPA
+//             if((dynamic_cast<Goomba*>(team1[i])->getId()=="G" && dynamic_cast<Magikoopa*>(team2[i])->getId()=="MK")){
+//                 do
+//                 {
+                    
+//                 } while(dynamic_cast<Goomba*>(team1[i])->getHP()>0 || dynamic_cast<Magikoopa*>(team2[i])->getHP()>0);
+//                 if(dynamic_cast<Goomba*>(team1[i])->getHP()<=0){
+//                     team1[i]->setGanadas(0);
+//                     team1[i]->setExperiencia(5);
+
+//                     team2[i]->setGanadas(1);
+//                     team2[i]->setExperiencia(10);
+//                     std::cout << "Gano: "<< team2[i]->getNombre() << '\n';
+//                 }else if(dynamic_cast<Magikoopa*>(team2[i])->getHP()<=0){
+//                     team2[i]->setGanadas(0);
+//                     team2[i]->setExperiencia(5);
+
+//                     team1[i]->setGanadas(1);
+//                     team1[i]->setExperiencia(10);
+//                     std::cout << "Gano: "<< team1[i]->getNombre() << '\n';
+//             }
+
+//             //CAHINCHOP-HAMMERBRO
+//             if((dynamic_cast<ChainChop*>(team1[i])->getId()=="CH" && dynamic_cast<HammerBro*>(team2[i])->getId()=="H")){
+//                 do
+//                 {
+                    
+//                 } while(dynamic_cast<ChainChop*>(team1[i])->getHP()>0 || dynamic_cast<HammerBro*>(team2[i])->getHP()>0);
+//                     if(dynamic_cast<ChainChop*>(team1[i])->getHP()<=0){
+//                         team1[i]->setGanadas(0);
+//                         team1[i]->setExperiencia(5);
+
+//                         team2[i]->setGanadas(1);
+//                         team2[i]->setExperiencia(10);
+//                         std::cout << "Gano: "<< team2[i]->getNombre() << '\n';
+//                     }else if(dynamic_cast<HammerBro*>(team2[i])->getHP()<=0){
+//                         team2[i]->setGanadas(0);
+//                         team2[i]->setExperiencia(5);
+
+//                         team1[i]->setGanadas(1);
+//                         team1[i]->setExperiencia(10);
+//                         std::cout << "Gano: "<< team1[i]->getNombre() << '\n';
+//                 }
+//             }
+
+//             //CHAINCHOP-MAGICKOOPA
+//             if((dynamic_cast<ChainChop*>(team1[i])->getId()=="CH" && dynamic_cast<Magikoopa*>(team2[i])->getId()=="MK")){
+//                     do
+//                     {
+                        
+//                     } while(dynamic_cast<ChainChop*>(team1[i])->getHP()>0 || dynamic_cast<Magikoopa*>(team2[i])->getHP()>0);
+//                     if(dynamic_cast<ChainChop*>(team1[i])->getHP()<=0){
+//                         team1[i]->setGanadas(0);
+//                         team1[i]->setExperiencia(5);
+
+//                         team2[i]->setGanadas(1);
+//                         team2[i]->setExperiencia(10);
+//                         std::cout << "Gano: "<< team2[i]->getNombre() << '\n';
+//                     }else if(dynamic_cast<Magikoopa*>(team2[i])->getHP()<=0){
+//                         team2[i]->setGanadas(0);
+//                         team2[i]->setExperiencia(5);
+
+//                         team1[i]->setGanadas(1);
+//                         team1[i]->setExperiencia(10);
+//                         std::cout << "Gano: "<< team1[i]->getNombre() << '\n';
+//                 }
+//             }
+//             }
+
+            
+
+//         }
+
+//         if( (dynamic_cast<Magikoopa*>(team1[i])->getId()=="MK" && dynamic_cast<Boo*>(team2[i])->getId()=="B") || (dynamic_cast<Magikoopa*>(team1[i])->getId()=="MK" && dynamic_cast<Paratroopa*>(team2[i])->getId()=="P") || (dynamic_cast<HammerBro*>(team1[i])->getId()=="H" && dynamic_cast<Boo*>(team2[i])->getId()=="B") || (dynamic_cast<HammerBro*>(team1[i])->getId()=="H" && dynamic_cast<Paratroopa*>(team2[i])->getId()=="P")){
+//             std::cout << "RANGE VENTAJA SOBRE LOS FLYING " << '\n';
+//             std::cout << "Atack(0.5)" << '\n';
+//         }
+
+//         if( (dynamic_cast<Boo*>(team1[i])->getId()=="B" && dynamic_cast<Goomba*>(team2[i])->getId()=="G") || (dynamic_cast<Boo*>(team1[i])->getId()=="B" && dynamic_cast<ChainChop*>(team2[i])->getId()=="CH") || (dynamic_cast<Paratroopa*>(team1[i])->getId()=="P" && dynamic_cast<Goomba*>(team2[i])->getId()=="G") || (dynamic_cast<Paratroopa*>(team1[i])->getId()=="P" && dynamic_cast<ChainChop*>(team2[i])->getId()=="CH")){
+//             std::cout << "FLYING VENTAJA SOBRE LOS MELEE " << '\n';
+//             std::cout << "Atack(0.5)" << '\n';
+//         }
+
+
+//         // if(turno==1){
+//         //     if(team1[i]->getId()=="G"){
+//         //         std::cout << "El ataque especial sera usado en el turno: "<< especial << '\n';
+//         //         std::cout << "HP: ";
+//         //         if(turno1=especial){
+//         //             if(turno1==i){
+
+//         //             }
+//         //         }
+//         //         std::cout << dynamic_cast<Goomba*>(team1[i])->getHP() << '\n';
+//         //         std::cout << team1[i]->getNombre() << "ATACK"<<'\n';
+//         //         std::cout << "Inflinge" << '\n';
+            
+//         //     }
+//         // }
+//     }
+
+// }
 
 
             

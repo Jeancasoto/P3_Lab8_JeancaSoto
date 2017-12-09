@@ -14,7 +14,7 @@ class Range : public Minion{
 		Range();
 
 		virtual ~Range();
-		virtual void pelea()=0;
+		virtual void pelea(Minion*)=0;
 
 		int getRango();
 		void setRango(int);

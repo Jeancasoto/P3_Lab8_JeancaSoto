@@ -19,7 +19,7 @@ class HammerBro : public Range{
 		HammerBro();
 
 		virtual ~HammerBro();
-		virtual void pelea();
+		virtual void pelea(Minion* );
 
 		double getTamano();
 		void setTamano(double);

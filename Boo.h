@@ -19,7 +19,7 @@ class Boo : public Flying{
 		Boo(string,int,string,int);
 		Boo();
 		virtual ~Boo();
-		virtual void pelea();
+		virtual void pelea(Minion*);
 
 		string getColor();
 		void setColor(string);

@@ -18,7 +18,7 @@ class ChainChop : public Melee{
 		ChainChop(string,int,string,int);
 		ChainChop();
 		virtual ~ChainChop();
-		virtual void pelea();
+		virtual void pelea(Minion* );
 
 		string getColor();
 		void setColor(string);

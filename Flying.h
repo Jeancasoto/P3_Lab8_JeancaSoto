@@ -13,7 +13,7 @@ class Flying : public Minion{
 		Flying(string ,int);//nombre, vuelo
 		Flying();
 		virtual ~Flying();
-		virtual void pelea()=0;
+		virtual void pelea(Minion* )=0;
 		int getVuelo();
 		void setVuelo(int);
 

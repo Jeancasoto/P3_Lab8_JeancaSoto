@@ -13,7 +13,7 @@ class Melee : public Minion{
 		Melee(string, int);
 		Melee();
 		virtual ~Melee();
-		virtual void pelea()=0;
+		virtual void pelea(Minion* )=0;
 		int getIntimidacion();
 		void setIntimidacion(int);
 

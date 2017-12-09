@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "Melee.h"
+#include "HammerBro.h"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ class Goomba : public Melee{
 		Goomba(string,int,double,int);
 		Goomba();
 		virtual ~Goomba();
-		virtual void pelea();
+		virtual void pelea(Minion*);
 
 		double getTamano();
 		void setTamano(double);
